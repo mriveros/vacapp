@@ -32,6 +32,7 @@ class SQLite(context: Context?, dbH: String?, factory: SQLiteDatabase.CursorFact
                 caravana VARCHAR(10),
                 activo INTEGER,
                 sincronizado INTEGER,
+                id_sexo INTEGER,
                 FOREIGN KEY (id_color_vaca) REFERENCES color(id_color_vaca),
                 FOREIGN KEY (id_ubicacion) REFERENCES ubicacion(id_ubicacion)                
             )

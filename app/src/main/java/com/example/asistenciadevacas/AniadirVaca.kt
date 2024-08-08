@@ -19,6 +19,7 @@ class AniadirVaca : AppCompatActivity() {
 
     lateinit var arrayColores: Spinner
     lateinit var arrayUbicaciones: Spinner
+    lateinit var arraySexos: Spinner
 
     @SuppressLint("CutPasteId", "SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,19 +62,25 @@ class AniadirVaca : AppCompatActivity() {
 
         val listaColores = ColoresUbicaciones.colores
         val listaUbicaciones = ColoresUbicaciones.ubicaciones
+        val listaSexos = ColoresUbicaciones.sexos
+
 
 
         val SnnColor = findViewById<Spinner>(R.id.SnnColor)
         val SnnUbicacion = findViewById<Spinner>(R.id.SnnUbicacion)
+        val SnnSexo = findViewById<Spinner>(R.id.SnnSexo)
 
         arrayColores = findViewById(R.id.SnnColor)
         arrayUbicaciones = findViewById(R.id.SnnUbicacion)
+        arraySexos = findViewById(R.id.SnnSexo)
 
         val adaptadorColores = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,listaColores)
         val adaptadorUbicaciones = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,listaUbicaciones)
+        val adaptadorSexos = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,listaSexos)
 
         arrayColores.adapter=adaptadorColores
         arrayUbicaciones.adapter=adaptadorUbicaciones
+        arraySexos.adapter=adaptadorSexos
 
         val btnGuardar = findViewById<Button>(R.id.btnGuardar)
         val btnCancelar = findViewById<Button>(R.id.btnCancelar)
@@ -89,6 +96,7 @@ class AniadirVaca : AppCompatActivity() {
                 txtNroCaravana.setText(vaca.caravana)
                 vaca.id_color_vaca?.let { SnnColor.setSelection(it) }
                 vaca.id_ubicacion?.let { SnnUbicacion.setSelection(it) }
+                vaca.id_sexo?.let { SnnSexo.setSelection(it) }
             }
 
             btnGuardar.setOnClickListener{
@@ -129,7 +137,7 @@ class AniadirVaca : AppCompatActivity() {
                 if (txtNombreVaca.text.toString().trim() != ""){
                     //llamar a la conexion db
                     val vacaNueva = VacaModel(SnnColor.selectedItemPosition, SnnUbicacion.selectedItemPosition,
-                        txtNombreVaca.text.toString(), txtFechaNacimiento.text.toString(), txtNroCaravana.text.toString(),1,0 )
+                        txtNombreVaca.text.toString(), txtFechaNacimiento.text.toString(), txtNroCaravana.text.toString(),1,0,SnnSexo.selectedItemPosition )
                     //guardar y limpiar campo (luego hacer metodo)
                     val idVaca = conexion.guardarVaca(vacaNueva)
                     vacaNueva.id_vaca = idVaca!!.toInt()
@@ -138,6 +146,7 @@ class AniadirVaca : AppCompatActivity() {
                     txtNroCaravana.setText("")
                     SnnColor.setSelection(0)
                     SnnUbicacion.setSelection(0)
+                    SnnSexo.setSelection(0)
                     ListaDeVacas.vacas!!.add(vacaNueva)
                     ListaDeVacas.vacaAdapter!!.notifyItemInserted(ListaDeVacas.vacas!!.lastIndex)
                     ListaDeVacas.vacaAdapter!!.ordenarPosiciones()

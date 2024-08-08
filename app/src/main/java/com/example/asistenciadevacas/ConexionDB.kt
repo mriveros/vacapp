@@ -21,6 +21,7 @@ class ConexionDB {
             put("caravana", vaca.caravana)
             put("activo", vaca.activo)
             put("sincronizado", vaca.sincronizado)
+            put("id_sexo", vaca.id_sexo)
         }
         return db?.insert("vaca", "foto", values)
 
@@ -39,6 +40,7 @@ class ConexionDB {
             put("caravana", vaca.caravana)
             put("activo", vaca.activo)
             put("sincronizado", vaca.sincronizado)
+            put("id_sexo", vaca.id_sexo)
         }
         println(db.update("vaca", values, selection, null))
     }
@@ -66,8 +68,9 @@ class ConexionDB {
             val caravana = cursor.getString(cursor.getColumnIndexOrThrow("caravana"))
             val activo = cursor.getInt(cursor.getColumnIndexOrThrow("activo"))
             val sincronizado = cursor.getInt(cursor.getColumnIndexOrThrow("sincronizado"))
+            val id_sexo = cursor.getInt(cursor.getColumnIndexOrThrow("id_sexo"))
 
-            vacas.add(VacaModel(id,id_color, id_ubicacion, nombre, nacimiento, caravana, activo,sincronizado))
+            vacas.add(VacaModel(id,id_color, id_ubicacion, nombre, nacimiento, caravana, activo,sincronizado,id_sexo))
         }
         cursor.close()
         return vacas

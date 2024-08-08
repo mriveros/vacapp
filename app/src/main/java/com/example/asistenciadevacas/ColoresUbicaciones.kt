@@ -24,5 +24,10 @@ class ColoresUbicaciones {
             "ISLA",
             "OMAR/SAND"
         )
+        val sexos = arrayListOf(
+            "Sin especificar",
+            "Macho",
+            "Hembra"
+        )
     }
 }
