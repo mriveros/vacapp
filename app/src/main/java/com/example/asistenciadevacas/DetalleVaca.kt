@@ -50,26 +50,26 @@ class DetalleVaca : AppCompatActivity() {
         }
 
         val btnEliminarVaca = findViewById<Button>(R.id.btnEliminarVaca)
-        btnEliminarVaca.setOnClickListener{
+        btnEliminarVaca.setOnClickListener {
             if (vaca != null) {
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Atención")
-                builder.setMessage("Seguro desea eliminar a: " + vaca.nombre_vaca)
+                builder.setMessage("Seguro desea desactivar a: " + vaca.nombre_vaca)
                 builder.setPositiveButton("Aceptar") { dialog, which ->
-                    // acción a realizar cuando se presiona el botón "Aceptar"
-                    conexion.eliminarVaca(vaca.id_vaca)
+                    // Acción a realizar cuando se presiona el botón "Aceptar"
+                    conexion.desactivarVaca(vaca)
                     ListaDeVacas.vacas!!.removeAt(vaca.position)
                     ListaDeVacas.vacaAdapter!!.ordenarPosiciones()
                     ListaDeVacas.vacaAdapter!!.notifyItemRemoved(vaca.position)
-                    val mensaje = "Se eliminó a: " + vaca.nombre_vaca?.toUpperCase()
+                    val mensaje = "Se desactivó a: " + vaca.nombre_vaca?.toUpperCase()
                     val duracion = Toast.LENGTH_SHORT // Duración de 3 segundos
                     val toast = Toast.makeText(this, mensaje, duracion)
                     toast.show()
                     finish()
                 }
                 builder.setNegativeButton("Cancelar") { dialog, which ->
-                    // acción a realizar cuando se presiona el botón "Cancelar"
-                    val mensaje = "No se eliminó a: " + vaca.nombre_vaca?.toUpperCase()
+                    // Acción a realizar cuando se presiona el botón "Cancelar"
+                    val mensaje = "No se desactivó a: " + vaca.nombre_vaca?.toUpperCase()
                     val duracion = Toast.LENGTH_SHORT // Duración de 3 segundos
                     val toast = Toast.makeText(this, mensaje, duracion)
                     toast.show()

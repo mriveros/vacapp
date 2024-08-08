@@ -129,7 +129,7 @@ class AniadirVaca : AppCompatActivity() {
                 if (txtNombreVaca.text.toString().trim() != ""){
                     //llamar a la conexion db
                     val vacaNueva = VacaModel(SnnColor.selectedItemPosition, SnnUbicacion.selectedItemPosition,
-                        txtNombreVaca.text.toString(), txtFechaNacimiento.text.toString(), txtNroCaravana.text.toString() )
+                        txtNombreVaca.text.toString(), txtFechaNacimiento.text.toString(), txtNroCaravana.text.toString(),1,0 )
                     //guardar y limpiar campo (luego hacer metodo)
                     val idVaca = conexion.guardarVaca(vacaNueva)
                     vacaNueva.id_vaca = idVaca!!.toInt()

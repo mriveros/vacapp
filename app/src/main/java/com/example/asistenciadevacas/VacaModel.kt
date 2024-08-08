@@ -14,6 +14,8 @@ class VacaModel() : Parcelable {
     var foto: Blob? = null
     var caravana: String? = null
     var position: Int = -1
+    var activo: Int? = null
+    var sincronizado: Int? = null
 
     constructor(parcel: Parcel) : this() {
         id_vaca = parcel.readValue(Int::class.java.classLoader) as? Int
@@ -23,23 +25,32 @@ class VacaModel() : Parcelable {
         fecha_nac = parcel.readString()
         caravana = parcel.readString()
         position = parcel.readInt()
+        activo = parcel.readInt()
+        sincronizado = parcel.readInt()
+
     }
 
-    constructor(id_vaca: Int?,id_color_vaca: Int, id_ubicacion: Int, nombre_vaca: String, fecha_nac: String, caravana: String) : this() {
+    constructor(id_vaca: Int?,id_color_vaca: Int, id_ubicacion: Int, nombre_vaca: String, fecha_nac: String, caravana: String, activo: Int, sincronizado: Int ) : this() {
         this.id_vaca = id_vaca
         this.id_color_vaca=id_color_vaca
         this.id_ubicacion=id_ubicacion
         this.nombre_vaca=nombre_vaca
         this.fecha_nac=fecha_nac
         this.caravana=caravana
+        this.activo= activo
+        this.sincronizado= sincronizado
+
     }
 
-    constructor(id_color_vaca: Int, id_ubicacion: Int, nombre_vaca: String, fecha_nac: String, caravana: String) : this() {
+    constructor(id_color_vaca: Int, id_ubicacion: Int, nombre_vaca: String, fecha_nac: String, caravana: String,  activo: Int, sincronizado: Int) : this() {
         this.id_color_vaca=id_color_vaca
         this.id_ubicacion=id_ubicacion
         this.nombre_vaca=nombre_vaca
         this.fecha_nac=fecha_nac
         this.caravana=caravana
+        this.activo= activo
+        this.sincronizado= sincronizado
+
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -50,6 +61,8 @@ class VacaModel() : Parcelable {
         parcel.writeString(fecha_nac)
         parcel.writeString(caravana)
         parcel.writeInt(position)
+        parcel.writeValue(activo)
+        parcel.writeValue(sincronizado)
     }
 
     override fun describeContents(): Int {

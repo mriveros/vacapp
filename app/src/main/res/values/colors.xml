@@ -10,8 +10,6 @@
 
     <!--colores extras añadidos-->
     <color name="red">#FF0000</color>
-    <color name="orange">	#FFA500</color>
-    <color name="green">#008000</color>
     <color name="blue">#0000FF</color>
     <color name="blueviolet">#8A2BE2</color>
     <color name="powderblue">#B0E0E6</color>
@@ -23,5 +21,8 @@
 
     <color name="colorActivado">#00FF00</color>
     <color name="colorDesactivado">#FF0000</color>
+    <color name="transparent_black">#65000000</color>
+    <color name="green">#4CAF50</color>
+    <color name="orange">#FF9800</color>
 
 </resources>

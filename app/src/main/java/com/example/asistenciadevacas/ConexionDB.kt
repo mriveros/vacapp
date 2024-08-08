@@ -19,6 +19,8 @@ class ConexionDB {
             put("fecha_nac", vaca.fecha_nac)
             put("fecha_preniez", vaca.fecha_preniez)
             put("caravana", vaca.caravana)
+            put("activo", vaca.activo)
+            put("sincronizado", vaca.sincronizado)
         }
         return db?.insert("vaca", "foto", values)
 
@@ -34,6 +36,9 @@ class ConexionDB {
             put("fecha_nac", vaca.fecha_nac)
             put("fecha_preniez", vaca.fecha_preniez)
             put("caravana", vaca.caravana)
+            put("caravana", vaca.caravana)
+            put("activo", vaca.activo)
+            put("sincronizado", vaca.sincronizado)
         }
         println(db.update("vaca", values, selection, null))
     }
@@ -59,8 +64,10 @@ class ConexionDB {
             val nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre_vaca"))
             val nacimiento = cursor.getString(cursor.getColumnIndexOrThrow("fecha_nac"))
             val caravana = cursor.getString(cursor.getColumnIndexOrThrow("caravana"))
+            val activo = cursor.getInt(cursor.getColumnIndexOrThrow("activo"))
+            val sincronizado = cursor.getInt(cursor.getColumnIndexOrThrow("sincronizado"))
 
-            vacas.add(VacaModel(id,id_color, id_ubicacion, nombre, nacimiento, caravana))
+            vacas.add(VacaModel(id,id_color, id_ubicacion, nombre, nacimiento, caravana, activo,sincronizado))
         }
         cursor.close()
         return vacas
@@ -71,7 +78,18 @@ class ConexionDB {
         val selection = "id_vaca = " + idVaca.toString()
         //val selectionArgs = arrayOf(idVaca.toString())
         val deletedRows = db.delete("vaca", selection, null)
-        println(deletedRows)
+    }
+
+    fun desactivarVaca(vaca:VacaModel) {
+        var db = conexion.writableDatabase
+        val selection = "id_vaca = " + vaca.id_vaca.toString()
+        val values = ContentValues().apply {
+
+            put("activo", 0)
+
+        }
+        println(db.update("vaca", values, selection, null))
+
     }
 
     fun getAllNuevasVacas(): MutableList<NuevoModelVaca> {
