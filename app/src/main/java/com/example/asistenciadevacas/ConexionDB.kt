@@ -125,4 +125,33 @@ class ConexionDB {
         cursor.close()
         return nuevasVacas
     }
+
+    fun getVacasPaginadas(offset: Int, limit: Int): MutableList<VacaModel> {
+        val vacas = mutableListOf<VacaModel>()
+        // Consulta para obtener `limit` vacas a partir de `offset`
+        // Ejemplo:
+        val query = "SELECT * FROM vaca LIMIT $limit OFFSET $offset"
+        val db = conexion.readableDatabase
+        val cursor = db.rawQuery(query, null)
+
+        if (cursor.moveToFirst()) {
+            do {
+                // Obtener datos de cursor y añadir a la lista de vacas
+                val id = cursor.getInt(cursor.getColumnIndexOrThrow("id_vaca"))
+                val id_color = cursor.getInt(cursor.getColumnIndexOrThrow("id_color_vaca"))
+                val id_ubicacion = cursor.getInt(cursor.getColumnIndexOrThrow("id_ubicacion"))
+                val nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre_vaca"))
+                val nacimiento = cursor.getString(cursor.getColumnIndexOrThrow("fecha_nac"))
+                val caravana = cursor.getString(cursor.getColumnIndexOrThrow("caravana"))
+                val activo = cursor.getInt(cursor.getColumnIndexOrThrow("activo"))
+                val sincronizado = cursor.getInt(cursor.getColumnIndexOrThrow("sincronizado"))
+                val id_sexo = cursor.getInt(cursor.getColumnIndexOrThrow("id_sexo"))
+
+                vacas.add(VacaModel(id,id_color, id_ubicacion, nombre, nacimiento, caravana, activo,sincronizado,id_sexo))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return vacas
+    }
+
 }

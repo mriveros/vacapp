@@ -8,8 +8,7 @@
     tools:context=".DetalleVaca">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardVistaDetalle"
-        android:layout_width="match_parent"
+            android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="10dp"
         android:orientation="vertical"

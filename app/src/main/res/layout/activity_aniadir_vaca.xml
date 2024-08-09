@@ -76,8 +76,7 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
-        android:id="@+id/textInfo"
-        android:layout_width="0dp"
+            android:layout_width="0dp"
         android:layout_height="20dp"
         android:gravity="center"
         android:layout_margin="0dp"

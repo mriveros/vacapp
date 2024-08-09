@@ -12,8 +12,4 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="logo">@drawable/tu_logo</item>
-    </style>
-
 </resources>
