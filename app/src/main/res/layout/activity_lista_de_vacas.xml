@@ -6,26 +6,37 @@
                                                    android:layout_height="match_parent"
                                                    tools:context=".ListaDeVacas">
 
+    <EditText
+            android:id="@+id/etBuscar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Buscar vaca o caravana"
+            android:inputType="text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:padding="8dp" />
+
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvListaVaca"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/etBuscar"
             app:layout_constraintBottom_toTopOf="@+id/btnAniadirVaca"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             tools:listitem="@layout/item_lista_vaca" />
 
     <ProgressBar
             android:id="@+id/progressBar"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:visibility="gone"
-    app:layout_constraintTop_toBottomOf="@+id/rvListaVaca"
-    app:layout_constraintBottom_toTopOf="@+id/btnAniadirVaca"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/rvListaVaca"
+            app:layout_constraintBottom_toTopOf="@+id/btnAniadirVaca"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
             android:id="@+id/btnAniadirVaca"

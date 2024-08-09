@@ -4,28 +4,29 @@ class ColoresUbicaciones {
 
     companion object{
         val colores = arrayListOf(
-            "AMARILLA",
-            "AMARILLA PAMPA",
-            "BAYA",
-            "BLANCA",
-            "BLANCO",
-            "CENIZA",
-            "CHORREADA",
-            "COLORADA",
-            "COLORADA PAMPA",
-            "GRIS",
-            "MARRÓN",
-            "NEGRA",
-            "NEGRA PAMPA",
-            "OSCA"
+            "No Especificado",
+            "Angus",
+            "Ayrshire",
+            "Brahman",
+            "Charolais",
+            "Criollo",
+            "Hereford",
+            "Holstein",
+            "Jersey",
+            "Guernsey",
+            "Limousin",
+            "Normando",
+            "Pardo Suizo",
+            "Simmental"
         )
         val ubicaciones = arrayListOf(
-            "CAMPITO",
-            "ISLA",
-            "OMAR/SAND"
+            "No Especificado",
+            "Campo",
+            "Potrero",
+            "Corral"
         )
         val sexos = arrayListOf(
-            "Sin especificar",
+            "No Especificado",
             "Macho",
             "Hembra"
         )
